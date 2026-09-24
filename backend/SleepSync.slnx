@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SleepSync.API/SleepSync.API.csproj" />
+  <Project Path="SleepSync.Application/SleepSync.Application.csproj" />
+  <Project Path="SleepSync.Domain/SleepSync.Domain.csproj" />
+  <Project Path="SleepSync.Infrastructure/SleepSync.Infrastructure.csproj" />
+</Solution>
