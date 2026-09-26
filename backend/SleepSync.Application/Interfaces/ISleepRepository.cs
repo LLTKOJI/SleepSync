@@ -1,6 +1,7 @@
-﻿namespace SleepSync.Application.Interfaces;
+﻿using SleepSync.Domain.Entities;
 
-public class ISleepRepository
-{
-    
+namespace SleepSync.Application.Interfaces;
+
+public interface ISleepRepository {
+    Task<IEnumerable<SleepGlobal>> GetAllAsync();
 }

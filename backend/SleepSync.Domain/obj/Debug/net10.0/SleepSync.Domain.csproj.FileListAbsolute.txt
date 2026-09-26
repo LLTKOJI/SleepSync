@@ -1,0 +1,12 @@
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\bin\Debug\net10.0\SleepSync.Domain.deps.json
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\bin\Debug\net10.0\SleepSync.Domain.dll
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\bin\Debug\net10.0\SleepSync.Domain.pdb
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\obj\Debug\net10.0\SleepSync.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\obj\Debug\net10.0\SleepSync.Domain.AssemblyInfoInputs.cache
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\obj\Debug\net10.0\SleepSync.Domain.AssemblyInfo.cs
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\obj\Debug\net10.0\SleepSync.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\obj\Debug\net10.0\SleepSync.Domain.sourcelink.json
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\obj\Debug\net10.0\SleepSync.Domain.dll
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\obj\Debug\net10.0\refint\SleepSync.Domain.dll
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\obj\Debug\net10.0\SleepSync.Domain.pdb
+C:\Users\Koji075\Documents\GitHub\SleepSync\backend\SleepSync.Domain\obj\Debug\net10.0\ref\SleepSync.Domain.dll

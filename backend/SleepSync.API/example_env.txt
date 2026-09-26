@@ -1,0 +1,2 @@
+# backend/SleepSync.API/.env
+ConnectionStrings__PostgresConnection=""

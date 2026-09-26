@@ -1,4 +1,5 @@
-﻿namespace SleepSync.Infrastructure;
+﻿
+namespace SleepSync.Infrastructure;
 
 public class Class1
 {
