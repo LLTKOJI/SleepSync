@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SleepSync.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c0d0d9726b78bbaec7afe044e36d3b70ba3b932")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+908acd7dee8d1a92d8ec2dcf4e78f2ec5d9350d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SleepSync.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SleepSync.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

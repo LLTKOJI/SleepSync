@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "C/eUfM9AEQg=",
+  "dgSpecHash": "Xx1f8Lc5syA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Koji075\\Documents\\GitHub\\SleepSync\\backend\\SleepSync.Infrastructure\\SleepSync.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Koji075\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
+    "C:\\Users\\Koji075\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.1.1\\fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
     "C:\\Users\\Koji075\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Koji075\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",
     "C:\\Users\\Koji075\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.11.0\\microsoft.codeanalysis.analyzers.3.11.0.nupkg.sha512",

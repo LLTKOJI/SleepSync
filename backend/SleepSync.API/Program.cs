@@ -1,29 +1,30 @@
-using DotNetEnv; // Agregar este using
+using DotNetEnv;
 using SleepSync.Infrastructure;
+using Scalar.AspNetCore;
+using SleepSync.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Cargar variables de entorno desde el archivo .env local
 Env.Load();
 
-var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__PostgresConnection") 
-                       ?? throw new InvalidOperationException("Falta la cadena de conexión.");
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__PostgresConnection")
+?? throw new InvalidOperationException("Falta la cadena de conexión.");
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// Llamamos al método que inyecta los repositorios y la base de datos
+builder.Services.AddApplication();
+
 builder.Services.AddInfrastructure(connectionString);
 
 builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
