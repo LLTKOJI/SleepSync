@@ -8,25 +8,25 @@ namespace SleepSync.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class SleepsController : ControllerBase
-{
+public class SleepsController : ControllerBase {
     private readonly ISleepRepository _repository;
-    private readonly IValidator<CreateSleepRequestDto> _validator;
+    private readonly IValidator<CreateSleepRequestDto> _createValidator;
+    private readonly IValidator<UpdateSleepRequestDto> _updateValidator;
 
-    public SleepsController(ISleepRepository repository, IValidator<CreateSleepRequestDto> validator)
-    {
+    public SleepsController(
+        ISleepRepository repository,
+        IValidator<CreateSleepRequestDto> createValidator,
+        IValidator<UpdateSleepRequestDto> updateValidator) {
         _repository = repository;
-        _validator = validator;
+        _createValidator = createValidator;
+        _updateValidator = updateValidator;
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetSleeps()
-    {
+    public async Task<IActionResult> GetSleeps() {
         var sleeps = await _repository.GetAllAsync();
 
-        // Mapeo Manual: Entidad -> DTO
-        var response = sleeps.Select(s => new SleepResponseDto
-        {
+        var response = sleeps.Select(s => new SleepResponseDto {
             Id = s.Id,
             Nombre = s.Nombre
         });
@@ -34,32 +34,70 @@ public class SleepsController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> CrearSleep([FromBody] CreateSleepRequestDto request)
-    {
-        // 1. Ejecutar FluentValidation
-        var validationResult = await _validator.ValidateAsync(request);
-        if (!validationResult.IsValid)
-        {
-            return BadRequest(validationResult.Errors); // HTTP 400 automático con detalles
+    // GET /api/sleeps/{id}
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetSleepById(int id) {
+        var sleep = await _repository.GetByIdAsync(id);
+        if (sleep is null) {
+            return NotFound(); // HTTP 404
         }
 
-        // 2. Mapeo Manual: DTO -> Entidad (Solo transferimos lo permitido)
-        var nuevoSleep = new SleepGlobal
-        {
+        var response = new SleepResponseDto {
+            Id = sleep.Id,
+            Nombre = sleep.Nombre
+        };
+
+        return Ok(response); // HTTP 200
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CrearSleep([FromBody] CreateSleepRequestDto request) {
+        var validationResult = await _createValidator.ValidateAsync(request);
+        if (!validationResult.IsValid) {
+            return BadRequest(validationResult.Errors);
+        }
+
+        var nuevoSleep = new SleepGlobal {
             Nombre = request.Nombre
         };
 
-        // 3. Persistencia
         var sleepCreado = await _repository.AddAsync(nuevoSleep);
 
-        // 4. Mapeo de Retorno
-        var response = new SleepResponseDto
-        {
+        var response = new SleepResponseDto {
             Id = sleepCreado.Id,
             Nombre = sleepCreado.Nombre
         };
 
-        return CreatedAtAction(nameof(GetSleeps), new { id = response.Id }, response);
+        return CreatedAtAction(nameof(GetSleepById), new { id = response.Id }, response);
+    }
+
+    // PUT /api/sleeps/{id}
+    [HttpPut("{id}")]
+    public async Task<IActionResult> ActualizarSleep(int id, [FromBody] UpdateSleepRequestDto request) {
+        var validationResult = await _updateValidator.ValidateAsync(request);
+        if (!validationResult.IsValid) {
+            return BadRequest(validationResult.Errors); // HTTP 400
+        }
+
+        var sleep = await _repository.GetByIdAsync(id);
+        if (sleep is null) {
+            return NotFound(); // HTTP 404
+        }
+
+        sleep.Nombre = request.Nombre;
+        await _repository.UpdateAsync(sleep);
+
+        return NoContent(); // HTTP 204
+    }
+
+    // DELETE /api/sleeps/{id}
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> EliminarSleep(int id) {
+        var eliminado = await _repository.DeleteAsync(id);
+        if (!eliminado) {
+            return NotFound(); // HTTP 404
+        }
+
+        return NoContent(); // HTTP 204
     }
 }

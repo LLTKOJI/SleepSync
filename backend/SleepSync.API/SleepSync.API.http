@@ -1,6 +1,48 @@
-@SleepSync.API_HostAddress = http://localhost:5209
+@host = http://localhost:5209
 
-GET {{SleepSync.API_HostAddress}}/weatherforecast/
+### 1. Obtener todos (GET) -> 200
+GET {{host}}/api/sleeps
 Accept: application/json
 
-###
+### 2. Crear válido (POST) -> 201
+POST {{host}}/api/sleeps
+Content-Type: application/json
+
+{
+  "nombre": "Prueba de registro de sueño"
+}
+
+### 3. Crear inválido (POST) -> 400
+POST {{host}}/api/sleeps
+Content-Type: application/json
+
+{
+  "nombre": "ab"
+}
+
+### 4. Consultar por ID (GET) -> 200, o 404 si no existe
+GET {{host}}/api/sleeps/1
+Accept: application/json
+
+### 5. Actualizar (PUT) -> 204, o 404 si no existe
+PUT {{host}}/api/sleeps/1
+Content-Type: application/json
+
+{
+  "nombre": "Registro de sueño actualizado"
+}
+
+### 6. Actualizar inválido (PUT) -> 400
+PUT {{host}}/api/sleeps/1
+Content-Type: application/json
+
+{
+  "nombre": "ab"
+}
+
+### 7. Eliminar (DELETE) -> 204, o 404 si ya no existe
+DELETE {{host}}/api/sleeps/1
+
+### 8. Consultar un ID inexistente (GET) -> 404
+GET {{host}}/api/sleeps/9999
+Accept: application/json
